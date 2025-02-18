@@ -1,0 +1,2 @@
+C:/deneme/Tarim-Projesi/android/app/.cxx/Debug/185v5v6v/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/deneme/Tarim-Projesi/android/app/.cxx/Debug/185v5v6v/armeabi-v7a/CMakeFiles/rebuild_cache.dir
