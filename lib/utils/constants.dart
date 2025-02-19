@@ -1,0 +1,1 @@
+// Sabit değerler (Renkler, metinler vs.)

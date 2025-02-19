@@ -1,0 +1,1 @@
+// Tarla bilgileri yönetimi

@@ -1,0 +1,1 @@
+// Tarla yönetimi API bağlantısı
