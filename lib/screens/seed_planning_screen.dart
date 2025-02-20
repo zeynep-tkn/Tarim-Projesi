@@ -1,1 +1,0 @@
-// Tohum Seçme & Ekim Planlama

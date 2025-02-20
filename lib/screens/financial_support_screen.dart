@@ -1,1 +1,0 @@
-// Tarım Kredileri ve Destekler

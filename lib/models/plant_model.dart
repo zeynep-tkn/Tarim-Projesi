@@ -1,1 +1,0 @@
-// Bitki bilgileri modeli

@@ -1,126 +1,168 @@
 import 'package:flutter/material.dart';
+import 'bitkilerim_screen.dart';
+import 'hava_durumu_screen.dart';
+import 'takvim_screen.dart';
+import 'hesabim_screen.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-    );
-  }
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class LoginScreen extends StatelessWidget {
-  final TextEditingController _inputController = TextEditingController();
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
 
-  LoginScreen({super.key});
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final List<Widget> _screens = [
+    const Center(child: Text('Ana Sayfa')),
+    const BitkilerimScreen(),
+    const HesabimScreen(),
+    const TakvimScreen(),
+  ];
+
+  void _onTabSelected(int index) {
+    if (index >= 0 && index < _screens.length) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  }
+
+  void _onCameraPressed() => print('Kamera açılıyor...');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          // Arka Plan Resmi
-          Positioned.fill(
-            child: Image.asset(
-              'assets/background.png', // Resminizin yolu
-              fit: BoxFit.cover,
-            ),
-          ),
-          // İçerik
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextField(
-                    controller: _inputController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      labelText: "E-Posta veya Telefon Numarası",
-                      border: OutlineInputBorder(),
-                      filled: true, // Arka planı belirginleştirmek için
-                      fillColor: Colors.white.withOpacity(0.8),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => VerificationScreen()),
-                      );
-                    },
-                    child: Text("Devam Et"),
-                  ),
-                ],
-              ),
-            ),
+      key: _scaffoldKey, // Scaffold key ekledik
+      appBar: AppBar(
+        title: const Text('Tarım Dostunuz'),
+        backgroundColor: const Color.fromARGB(255, 156, 97, 20), // Yeşil renk
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              // Menü açılıyor
+              _scaffoldKey.currentState?.openDrawer();
+            },
           ),
         ],
       ),
-    );
-  }
-}
-
-
-
-class VerificationScreen extends StatelessWidget {
-  final TextEditingController _codeController = TextEditingController();
-
-  VerificationScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Doğrulama Kodu")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: _screens[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onTabSelected,
+        type: BottomNavigationBarType.fixed, // Sabit tip ekledik
+        backgroundColor: const Color.fromARGB(255, 156, 97, 20), // Yeşil
+        selectedItemColor: const Color.fromARGB(255, 9, 77, 0), // Kahverengi
+        unselectedItemColor: const Color.fromARGB(255, 255, 255, 255), // Beyaz
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Ana Sayfa'),
+          BottomNavigationBarItem(icon: Icon(Icons.local_florist), label: 'Bitkilerim'),
+          BottomNavigationBarItem(icon: Icon(Icons.wb_sunny), label: 'Hava Durumu'),
+          BottomNavigationBarItem(icon:  Icon(Icons.person), label: 'Profil'),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _onCameraPressed,
+        child: const Icon(Icons.camera),
+        backgroundColor: const Color(0xFF388E3C),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      drawer: Drawer(
+        backgroundColor: const Color(0xFF388E3C), // Menü arka planı yeşil
+        child: ListView(
           children: [
-            TextField(
-              controller: _codeController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "Doğrulama Kodu",
-                border: OutlineInputBorder(),
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF388E3C), // Header yeşil olacak
+              ),
+              child: Text(
+                'Tarım Dostunuz',
+                style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                  (route) => false,
-                );
+            ListTile(
+              title: const Text('Ana Sayfa', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 0;
+                });
+                Navigator.pop(context);
               },
-              child: Text("Onayla"),
+            ),
+            ListTile(
+              title: const Text('Dersler', style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 3;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Tarım Kredisi', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 4;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Takvim', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 4;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Malzemeler', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 4;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Galeri', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 4;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Yapılacaklar', style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+              onTap: () {
+                setState(() {
+                  _selectedIndex = 3;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            const Divider(),
+            ListTile(
+              title: const Text('Destek: tarimdestek@example.com', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                // Email açma işlemi yapılabilir.
+              },
+            ),
+            ListTile(
+              title: const Text('Telefon: 123-456-7890', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                // Telefon açma işlemi yapılabilir.
+              },
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Ana Sayfa")),
-      body: Center(child: Text("Giriş Başarılı!")),
     );
   }
 }
