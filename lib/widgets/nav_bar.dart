@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
   final int currentIndex;
-  final ValueChanged<int> onTabSelected;
-  final GlobalKey<NavigatorState>? navKey; // Opsiyonel olarak eklenmiş
+  final Function(int) onTabSelected;
+  final GlobalKey<NavigatorState> navKey;
 
   const NavBar({
     Key? key,
     required this.currentIndex,
     required this.onTabSelected,
-    this.navKey,
+    required this.navKey,
   }) : super(key: key);
 
   @override
@@ -17,25 +17,18 @@ class NavBar extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTabSelected,
-      backgroundColor: const Color.fromARGB(255, 156, 97, 20),
-      selectedItemColor: const Color.fromARGB(255, 0, 245, 12),
-      unselectedItemColor: const Color.fromARGB(153, 8, 0, 0),
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Ana Sayfa',
+          label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.local_florist),
-          label: 'Bitkilerim',
+          icon: Icon(Icons.search),
+          label: 'Search',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.book),
-          label: 'Dersler',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.photo_album),
-          label: 'Galeri',
+          icon: Icon(Icons.account_circle),
+          label: 'Profile',
         ),
       ],
     );

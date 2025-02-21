@@ -5,93 +5,104 @@ class DrawerMenu extends StatelessWidget {
   final int selectedIndex;
 
   const DrawerMenu({
-    Key? key,
+    super.key,
     required this.onItemTapped,
     required this.selectedIndex,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color(0xFF388E3C), // Koyu yeşil zemin
-      child: ListView(
-        children: [
-          // Üstte profil alanı
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Color(0xFF388E3C), // Koyu yeşil
+      child: Container(
+        color: const Color.fromARGB(255, 247, 245, 240), // Arka plan rengini değiştirdik
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 156, 97, 20),
+              ),
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  'Tarım Uygulaması',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
-            child: Text(
-              'Tarım Dostunuz',
-              style: TextStyle(color: Colors.white, fontSize: 24),
+            // Ana Menü
+            const ListTile(
+              leading: Icon(Icons.person, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Hesabım'),
             ),
-          ),
-          ListTile(
-            title: const Text('Profil', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              // Profil ekranına yönlendirme yapılabilir.
-              Navigator.pop(context);
-            },
-          ),
-          const Divider(),
-          // Orta kısım: navigasyon öğeleri
-          ListTile(
-            title: const Text('Bilgiler', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              onItemTapped(5);
-              Navigator.pop(context);
-            },
-            selected: selectedIndex == 5,
-          ),
-          ListTile(
-            title: const Text('Yapılacaklar', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              onItemTapped(6);
-              Navigator.pop(context);
-            },
-            selected: selectedIndex == 6,
-          ),
-          ListTile(
-            title: const Text('Malzemeler', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              onItemTapped(7);
-              Navigator.pop(context);
-            },
-            selected: selectedIndex == 7,
-          ),
-          ListTile(
-            title: const Text('Takvim', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              onItemTapped(8);
-              Navigator.pop(context);
-            },
-            selected: selectedIndex == 8,
-          ),
-          ListTile(
-            title: const Text('Hava Durumu', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              onItemTapped(9);
-              Navigator.pop(context);
-            },
-            selected: selectedIndex == 9,
-          ),
-          const Divider(),
-          // En alt kısım: iletişim bilgileri
-          ListTile(
-            title: const Text('Destek: tarimdestek@example.com', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              // Email açma işlemi yapılabilir.
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('Telefon: 123-456-7890', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              // Telefon açma işlemi yapılabilir.
-              Navigator.pop(context);
-            },
-          ),
-        ],
+            const ListTile(
+              leading: Icon(Icons.local_florist, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Bitkilerim'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.wb_sunny, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Hava Durumu'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.calendar_today, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Takvim'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.school, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Dersler'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.monetization_on, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Tarım Kredisi'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.inventory, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Malzemeler'),
+            ),
+            // Yeni Menü Öğeleri
+            const ListTile(
+              leading: Icon(Icons.list, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Yapılacaklar'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.photo_album, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Galeri'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.info, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Bilgiler'),
+            ),
+            // Destek Bölümü
+            const Divider(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                'Destek',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 156, 97, 20),
+                ),
+              ),
+            ),
+            const ListTile(
+              leading: Icon(Icons.email, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('E-posta: support@tarim.com'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.phone, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Telefon: +90 123 456 78 90'),
+            ),
+            const ListTile(
+              leading: Icon(Icons.help_outline, color: Color.fromARGB(255, 156, 97, 20)),
+              title: Text('Yardım & SSS'),
+            ),
+          ],
+        ),
       ),
     );
   }

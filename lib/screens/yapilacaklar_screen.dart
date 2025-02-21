@@ -5,17 +5,6 @@ class YapilacaklarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Yapılacaklar'),
-        backgroundColor: const Color(0xFF388E3C),
-      ),
-      body: const Center(
-        child: Text(
-          'Yapılacaklar Sayfası',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
+    return Center(child: Text('Yapılacaklar Ekranı'));
   }
 }

@@ -5,19 +5,6 @@ class HavaDurumuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hava Durumu'),
-        backgroundColor: const Color(0xFF388E3C),
-      ),
-      body: const Center(
-        child: Text(
-          'Hava Durumu Sayfası',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
+    return Center(child: Text('Hava Durumu'));
   }
 }
-
-

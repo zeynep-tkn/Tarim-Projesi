@@ -5,17 +5,6 @@ class TarimKredisiScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tarım Kredisi'),
-        backgroundColor: const Color(0xFF388E3C),
-      ),
-      body: const Center(
-        child: Text(
-          'Tarım Kredisi Sayfası',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
+    return Center(child: Text('Tarım Kredisi Ekranı'));
   }
 }

@@ -5,17 +5,6 @@ class BilgilerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Bilgiler'),
-        backgroundColor: const Color(0xFF388E3C),
-      ),
-      body: const Center(
-        child: Text(
-          'Bilgiler Sayfası',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
+    return Center(child: Text('Bilgiler Ekranı'));
   }
 }

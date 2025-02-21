@@ -5,17 +5,6 @@ class GaleriScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Galeri'),
-        backgroundColor: const Color(0xFF388E3C),
-      ),
-      body: const Center(
-        child: Text(
-          'Galeri Sayfası',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
+    return Center(child: Text('Galeri Ekranı'));
   }
 }
