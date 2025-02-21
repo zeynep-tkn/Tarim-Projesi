@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+//gereksiz şu an
+/*import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
   final int currentIndex;
@@ -34,3 +35,4 @@ class NavBar extends StatelessWidget {
     );
   }
 }
+*/
