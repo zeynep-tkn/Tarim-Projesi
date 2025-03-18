@@ -11,8 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.8  # Güncellenmiş sürüm
   flutter_colorpicker: ^1.0.3
+  cloud_firestore: ^5.6.4   # Firebase Firestore'u ekledim
 
 dev_dependencies:
   flutter_test:
