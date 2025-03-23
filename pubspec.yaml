@@ -6,25 +6,29 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"  # Flutter 3.x ile uyumlu Dart sürümü
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8  # Güncellenmiş sürüm
+  table_calendar: ^3.2.0
+  cupertino_icons: ^1.0.8
   flutter_colorpicker: ^1.0.3
-  cloud_firestore: ^5.6.4   # Firebase Firestore'u ekledim
-
+  cloud_firestore: ^5.6.4
+  intl: ^0.20.2
+  flutter_drawing_board: ^0.9.5
+  weather: ^3.1.1
+  geolocator: ^13.0.3
+  cached_network_image: ^3.4.1
+  path_provider: ^2.1.5
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  
+  flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
+
 assets:
-    - assets/images/bitki.png
-
-
-
-
+  - assets/images/bitki.png
