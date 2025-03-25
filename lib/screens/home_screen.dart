@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _screens = [
     const BitkilerimApp(),
-    const HavaDurumuScreen(),
+    const WeatherApp(),
     const HesabimScreen(),
     const TakvimScreen(),
     const DerslerScreen(),

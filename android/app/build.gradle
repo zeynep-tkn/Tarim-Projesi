@@ -3,7 +3,7 @@ plugins {
     // START: FlutterFire Configuration
     id 'com.google.gms.google-services'  // Google Services Gradle Plugin'i burada ekliyoruz
     // END: FlutterFire Configuration
-    id "kotlin-android"
+    id "kotlin-android" 
     // Flutter Gradle Plugin'i uygulama ile ilgili pluginlerin sonunda
     id "dev.flutter.flutter-gradle-plugin"
 }
